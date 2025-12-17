@@ -13,7 +13,7 @@ import OpenAIExamplesV2 from './pages/OpenAIExamplesV2';
 import ClaudeV2 from './pages/ClaudeV2';
 import { GeminiExamples} from './pages/GeminiExamples';
 import OpenAiV5Examples from './pages/OpenAiV5Examples';
-import Layout from './themes/PageLayout';
+import Layout from './themes/structure/Layout';
 import { ROUTES } from './themes/NavConstants';
 
 
@@ -23,8 +23,6 @@ createRoot(document.getElementById("root")).render(
       <ThemeProvider>
       <BrowserRouter>
         <Routes>
-            
-            
             {/* Parent Route controls the Layout */}
             <Route path="/" element={<Layout />}>
                {/* Index element controls the default page */}

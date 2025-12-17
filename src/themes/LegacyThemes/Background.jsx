@@ -1,4 +1,4 @@
-export function Background({
+export default function Background({
   variant = "plain", // plain | soft | gradient
   imageUrl,
   className,

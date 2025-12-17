@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
-import icon from '../assets/MillerIcon.ico';
-//import logo from '../assets/MlmLogo.jpg';
-import { useNavigation } from '../hooks/ClaudeHooks/useNavigation';
-import { DarkTheme,LightTheme, ContainerBorderTheme, createDiagonalGradient } from "../../../themes/ThemeStyles";
-const NavBar = () => {
-  const { navItems } = useNavigation();
+import icon from '../../assets/MillerIcon.ico';
+//import logo from '../../assets/MlmLogo.jpg';
+//import { useNavigation } from '../hooks/Mlm/useNavigation';
+import { useNavigation } from '../../hooks/Mlm/useNavigation.js';
+//import { NAV_ITEMS } from "../NavConstants";
+import { DarkTheme,LightTheme, ContainerBorderTheme, createDiagonalGradient } from "../ThemeStyles";
 
-  
+
+const NavBar = () => {
+const { navItems } = useNavigation();
+  //function Background({ children }) { {children}
   // Shadow definitions
   //const shadowOuterDrop = '0 22px 60px rgba(0, 0, 0, 0.35)'; // outer drop shadow
   //const shadowInnerSmall = '0 2px 8px'; // inner small shadow

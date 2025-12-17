@@ -1,8 +1,8 @@
 import { useState } from "react"; // Removed useEffect
-import { useBreakpoint } from "../../hooks/OpenAiHooks/useBreakpoint";
-import { baseStyles } from "../../styles/baseStyles";
-import { Container } from "./Container";
-import { IconButton } from "../../components/OpenAiPrimitives/IconButton";
+import { useBreakpoint } from "../hooks/OpenAiHooksV2/useBreakpoint.js";
+import baseStyles  from "../styles/baseStyles";
+import Container from "./LegacyThemes/Container.jsx";
+import { IconButton } from "../components/OpenAiV5/IconButton";
 
 export default function NavBar({
   brand,

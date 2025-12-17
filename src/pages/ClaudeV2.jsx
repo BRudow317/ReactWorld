@@ -71,11 +71,14 @@ export default function ClaudeV2() {
     visits: 1,
   });
   const { loading, data, error, execute } = useHttp();
+ 
   const darkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const debouncedTopic = useDebounce(values.topic, 500);
-
   const { values, errors, touched, handleBlur, handleChange, handleSubmit, reset } =
     useForm(initialValues, validateForm);
+  const debouncedTopic = useDebounce(values.topic, 500);
+  
+
+  
 
   const addToast = useCallback((message, type = "info") => {
     setToasts((prev) => [...prev, { id: Date.now(), message, type }]);

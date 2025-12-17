@@ -1,7 +1,11 @@
-import logo from '../assets/MlmLogo.jpg';
+import logo from '../../assets/MlmLogo.jpg';
 import React from "react";
 //import { useNavigation } from '../hooks/useNavigation';
-import { DarkTheme } from '../themes/ThemeStyles';
+import { DarkTheme,
+// LightTheme, 
+// ContainerBorderTheme, 
+// createDiagonalGradient 
+} from "../ThemeStyles";
 
 //export default
 //class Header extends React.Component {

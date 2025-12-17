@@ -1,9 +1,9 @@
-import { Background } from "./Background";
+import Background from "./Background";
 import HeaderContainer from "./HeaderContainer";
 import MainContainer from "./MainContainer";
-import { Container } from "./Container";
+import Container from "./Container";
 import FooterContainer from "./FooterContainer";
-import { GlobalAnimations } from "../styles/GlobalAnimations";
+import { GlobalAnimations } from "../../styles/GlobalAnimations";
 import { Outlet } from "react-router-dom";
 
 export default function PageLayout({

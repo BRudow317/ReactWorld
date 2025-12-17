@@ -1,5 +1,5 @@
-import Header from './Header.jsx';
-import MainContent from './MainContent.jsx';
+import React from "react";
+//import { DarkTheme,LightTheme, ContainerBorderTheme, createDiagonalGradient } from "../ThemeStyles";
 
 const Footer = function() {
     return (

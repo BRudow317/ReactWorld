@@ -1,4 +1,4 @@
-export function Container({ children, maxWidth = 1100, className, style }) {
+export default function Container({ children, maxWidth = 1100, className, style }) {
   return (
     <div
       className={className}
