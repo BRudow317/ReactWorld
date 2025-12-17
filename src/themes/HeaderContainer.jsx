@@ -1,4 +1,4 @@
-export function HeaderContainer({ children, sticky = true, className, style }) {
+export default function HeaderContainer({ children, sticky = true, className, style }) {
   return (
     <header
       className={className}

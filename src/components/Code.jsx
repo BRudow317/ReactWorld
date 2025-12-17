@@ -1,6 +1,8 @@
-let codeString = `function Example() {
-  return <div>Hello World</div>;
-}`;
+
+//Example usage:
+// let codeString = `function Example() {
+//   return <div>Hello World</div>;
+// }`;
 
 export function CodeBox({ codeString }) {
   return (

@@ -29,7 +29,7 @@ import {
   useToast,
 } from "../hooks/OpenAiHooksV2";
 import { PageLayout, NavBar } from "../layouts/OpenAiV2";
-import { clamp, toTitleCase } from "../utils";
+import { clamp, toTitleCase } from "../utils/OpenAiUtils";
 
 const tableColumns = [
   { key: "name", header: "Name", sortable: true },

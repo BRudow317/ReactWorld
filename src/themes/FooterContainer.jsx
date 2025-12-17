@@ -1,6 +1,6 @@
-import { baseStyles } from "../../../styles/baseStyles";
+import { baseStyles } from "../styles/baseStyles";
 
-export function FooterContainer({ children, className, style }) {
+export default function FooterContainer({ children, className, style }) {
   return (
     <footer
       className={className}

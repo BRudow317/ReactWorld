@@ -7,12 +7,13 @@ import Lists from './pages/Lists';
 import Ecommerce from './pages/Ecommerce';
 import Chat from './pages/Chat';
 import SimpleHtml from './pages/SimpleHtml';
-import OpenAIExamples from './pages/OpenAIExamples';
-import ClaudeExamples from './pages/ClaudeExamples';
+//import OpenAIExamples from '../bin/LegacyBuild/LegacyPages/OpenAIExamples';
+//import ClaudeExamples from '../bin/LegacyBuild/LegacyPages/ClaudeExamples';
 import OpenAIExamplesV2 from './pages/OpenAIExamplesV2';
 import ClaudeV2 from './pages/ClaudeV2';
-import { GeminiExamples } from './pages/GeminiExamples';
-import Layout from './structure/Layout';
+import { GeminiExamples} from './pages/GeminiExamples';
+import OpenAiV5Examples from './pages/OpenAiV5Examples';
+import Layout from './themes/PageLayout';
 import { ROUTES } from './themes/NavConstants';
 
 
@@ -22,6 +23,8 @@ createRoot(document.getElementById("root")).render(
       <ThemeProvider>
       <BrowserRouter>
         <Routes>
+            
+            
             {/* Parent Route controls the Layout */}
             <Route path="/" element={<Layout />}>
                {/* Index element controls the default page */}
@@ -32,11 +35,13 @@ createRoot(document.getElementById("root")).render(
                <Route path={ROUTES.ECOMMERCE} element={<Ecommerce />} />
                <Route path={ROUTES.CHAT} element={<Chat />} />
                <Route path={ROUTES.SIMPLE_HTML} element={<SimpleHtml />} />
-               <Route path={ROUTES.OPENAI_EXAMPLES} element={<OpenAIExamples />} />
-               <Route path={ROUTES.CLAUDE_EXAMPLES} element={<ClaudeExamples />} />
+               {/* <Route path={ROUTES.OPENAI_EXAMPLES} element={<OpenAIExamples />} /> */}
+               {/* <Route path={ROUTES.CLAUDE_EXAMPLES} element={<ClaudeExamples />} /> */}
                <Route path={ROUTES.OPENAI_V2} element={<OpenAIExamplesV2 />} />
                <Route path={ROUTES.CLAUDE_V2} element={<ClaudeV2 />} />
                <Route path={ROUTES.GEMINI_EXAMPLES} element={<GeminiExamples />} />
+               {/* OpenAI V5 standalone route - has its own PageLayout */}
+            <Route path={ROUTES.OPENAI_V5} element={<OpenAiV5Examples />} />
             </Route>
         </Routes>
       </BrowserRouter>

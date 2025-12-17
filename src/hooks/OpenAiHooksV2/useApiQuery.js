@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { api } from "../../api";
+import { api } from "../../../bin/LegacyBuild/LegacyOpenAiApi";
 import { useAsync } from "./useAsync";
 
 export function useApiQuery(path, params) {

@@ -1,18 +1,13 @@
 //import React from 'react';
 //import { useState } from 'react'
-import Header from '../structure/Header';
-
-//import { createRoot } from 'react-dom/client'
-//import { NavLink, BrowserRouter} from "react-router-dom";
-//import { Config } from "@react-router/dev/config";
-//import NavBar from '../components/navBar.jsx';
+import Header from '../themes/HeaderContainer';
+import MainContainer from '../themes/MainContainer';
+import Footer from '../themes/FooterContainer';
 
 
 export default function Home() {
 return (
    <>
-      
-      <Header />
       <p>Welcome to the Miller Land Management React Application!</p>
       <p>This application is designed to help you manage your land assets efficiently and effectively.</p>
       <p>Explore the various features and tools available to streamline your land management tasks.</p>

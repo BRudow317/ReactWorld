@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Menu, Search, ShoppingBag, X } from 'lucide-react';
 
 const EcommerceSite = () => {
@@ -88,7 +88,7 @@ const Header = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   );
 };
 
-const MobileMenu = ({ setMobileMenuOpen }) => {
+const MobileMenu = () => {
   const styles = {
     overlay: {
       position: 'fixed',

@@ -2,7 +2,7 @@ import { Activity, useState } from 'react';
 
 // import Sidebar from './Sidebar.js';
 
-export default function SideBarExampleUse() {
+export function SideBarExampleUse() {
   const [isShowingSidebar, setIsShowingSidebar] = useState(true);
 
   return (
@@ -20,8 +20,6 @@ export default function SideBarExampleUse() {
     </>
   );
 }
-
-import { useState } from 'react';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false)
