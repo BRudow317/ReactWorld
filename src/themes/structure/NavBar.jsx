@@ -4,7 +4,7 @@ import icon from '../../assets/MillerIcon.ico';
 //import { useNavigation } from '../hooks/Mlm/useNavigation';
 import { useNavigation } from '../../hooks/Mlm/useNavigation.js';
 //import { NAV_ITEMS } from "../NavConstants";
-import { DarkTheme,LightTheme, ContainerBorderTheme, createDiagonalGradient } from "../ThemeStyles";
+import { DarkTheme,LightTheme, ContainerBorderTheme, createDiagonalGradient } from "../OldThemeStyles.js";
 
 const NavBar = () => {
   const { navItems } = useNavigation();

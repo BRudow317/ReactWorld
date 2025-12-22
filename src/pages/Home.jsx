@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-//import Layout from "../themes/structure/Layout";
-// import MainContainer from '../themes/MainContainer'; // Not needed here, PageLayout handles it
-// import Container from '../themes/Container';         // Not needed here
+import { MlmForm } from "../components/MlmComponents/Form/MlmForm";
+import { GemForm } from "../components/MlmComponents";
+import { CldFormComponent } from "../components/MlmComponents";
 
 export default function Home() {
+
   return (
     <>
       <div>
@@ -16,44 +17,23 @@ export default function Home() {
           Explore the various features and tools available to streamline your
           land management tasks.
         </p>
-        <div style={{ height: "2rem" }} />{" "}
-        {/* A cleaner way to do line breaks */}
-        <p>
-          Use the navigation bar above to access different sections of the
-          application.
-        </p>
-        <p>We hope you find this application useful and easy to navigate!</p>
+        <MlmForm />
+
+        <br />
+        <h2>Gemini Themed Form Example </h2>
+        <GemForm 
+          initialValues={{ name: '', email: '' }}
+          fields={[
+            { name: 'name', label: 'Name', placeholder: 'Enter your name' },
+            { name: 'email', label: 'Email', placeholder: 'Enter your email', type: 'email' }
+          ]}
+          onSubmit={(values) => console.log(values)}
+        />
+        <br />
+        <h2>Claude Themed Form Example </h2>
+        <CldFormComponent />
+        
       </div>
   </>
   );
 }
-
-
-// function ThemeToggle() {
-//   // state: 'light' | 'dark' | 'system'
-//   const [theme, setTheme] = useState("system");
-
-//   useEffect(() => {
-//     const root = document.documentElement; // The <html> tag
-
-//     if (theme === "system") {
-//       // Remove the manual override, let CSS @media handle it
-//       root.removeAttribute("data-theme");
-//     } else {
-//       // Force the theme (add data-theme="dark" or "light")
-//       root.setAttribute("data-theme", theme);
-//     }
-//   }, [theme]);
-
-//   return (
-//     <div style={{ display: "flex", gap: 10 }}>
-//       <button onClick={() => setTheme("light")}>Light</button>
-//       <button onClick={() => setTheme("dark")}>Dark</button>
-//       <button onClick={() => setTheme("system")}>System (Auto)</button>
-//     </div>
-//   );
-// }
-
-// function multiLineBreak(x) {
-//   return <>{Array(x).fill(<br />)}</>;
-// }

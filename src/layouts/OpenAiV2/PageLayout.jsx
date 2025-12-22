@@ -8,11 +8,11 @@ export default function PageLayout({
   backgroundVariant = "gradient",
 }) {
   return (
-    <Background variant={backgroundVariant}>
+    // <Background variant={backgroundVariant}>
       <Container>
         {nav}
         {children}
       </Container>
-    </Background>
+    // </Background>
   );
 }

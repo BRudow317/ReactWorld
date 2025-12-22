@@ -3,12 +3,6 @@ import banner from '../../assets/MlmBanner.jpg';
 import React from "react";
 import styles from "./Layout.module.css";
 
-import { DarkTheme
-//,LightTheme
-//,ContainerBorderTheme
-//,createDiagonalGradient 
-} from "../ThemeStyles";
-
 const Header = () => {
     
     return (

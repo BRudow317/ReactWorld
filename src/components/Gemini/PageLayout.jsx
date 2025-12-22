@@ -10,7 +10,7 @@ export const PageLayout = ({ header, footer, children }) => {
       display: 'flex', 
       flexDirection: 'column', 
       minHeight: '100vh', 
-      backgroundColor: colors.background,
+      // backgroundColor: colors.background,
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
     }}>
       {header}

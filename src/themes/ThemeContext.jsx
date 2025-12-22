@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-// 1. Create the "Channel"
+// 1. Create the "Channel" src\themes\ThemeContext.jsx
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {

@@ -11,7 +11,7 @@ export default function Background({ variant = "gradient", children }) {
       style={{
         minHeight: "100vh",
         background: gradients[variant] || gradients.gradient,
-        color: "#fff",
+        // color: "#fff",
         padding: "2rem 0",
       }}
     >
