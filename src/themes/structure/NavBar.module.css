@@ -1,0 +1,116 @@
+/* NavBar CSS Module */
+
+/* Theme variables with safe fallbacks */
+:root {
+  --mlm-dark: #161d16;
+  --mlm-white: #ffffff;
+  --mlm-orange: #f59e0b;
+  --mlm-green: #3fc878;
+}
+
+.navShell {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  width: 100%;
+  min-height: 10%;
+  max-height: 20%;
+  margin: 0;
+  padding: 0;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .75rem;
+  background: linear-gradient(135deg, var(--mlm-dark), rgba(31, 41, 31, .25));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.navLogo {
+  min-height: 40px;
+  max-height: 75px;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  background: var(--mlm-dark);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+}
+
+.navLogoImg {
+  height: 100%;
+  min-height: 3rem;
+  width: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: min(12px, 12%);
+}
+
+.navMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.navKicker {
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--mlm-orange);
+}
+
+.navLinks {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  color: var(--mlm-white);
+  text-decoration: none;
+  font-weight: 400;
+  text-shadow: none;
+  background: var(--mlm-dark);
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: all 200ms ease;
+}
+
+.navLink:hover {
+  color: var(--mlm-orange);
+}
+
+.active {
+  color: var(--mlm-orange);
+  font-weight: 700;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  background: var(--mlm-green);
+  border: none;
+  box-shadow: 0 12px 28px rgba(63, 200, 120, 0.35), 0 2px 8px rgba(0, 0, 0, 0.28);
+}
