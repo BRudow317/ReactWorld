@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 //import Layout from "../themes/structure/Layout";
 // import MainContainer from '../themes/MainContainer'; // Not needed here, PageLayout handles it
 // import Container from '../themes/Container';         // Not needed here
 
 export default function Home() {
   return (
-    //<Layout>
+    <>
       <div>
         <p>Welcome to the Miller Land Management React Application!</p>
         <p>
@@ -24,9 +24,35 @@ export default function Home() {
         </p>
         <p>We hope you find this application useful and easy to navigate!</p>
       </div>
-    //</Layout>
+  </>
   );
 }
+
+
+// function ThemeToggle() {
+//   // state: 'light' | 'dark' | 'system'
+//   const [theme, setTheme] = useState("system");
+
+//   useEffect(() => {
+//     const root = document.documentElement; // The <html> tag
+
+//     if (theme === "system") {
+//       // Remove the manual override, let CSS @media handle it
+//       root.removeAttribute("data-theme");
+//     } else {
+//       // Force the theme (add data-theme="dark" or "light")
+//       root.setAttribute("data-theme", theme);
+//     }
+//   }, [theme]);
+
+//   return (
+//     <div style={{ display: "flex", gap: 10 }}>
+//       <button onClick={() => setTheme("light")}>Light</button>
+//       <button onClick={() => setTheme("dark")}>Dark</button>
+//       <button onClick={() => setTheme("system")}>System (Auto)</button>
+//     </div>
+//   );
+// }
 
 // function multiLineBreak(x) {
 //   return <>{Array(x).fill(<br />)}</>;

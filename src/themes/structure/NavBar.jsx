@@ -6,9 +6,8 @@ import { useNavigation } from '../../hooks/Mlm/useNavigation.js';
 //import { NAV_ITEMS } from "../NavConstants";
 import { DarkTheme,LightTheme, ContainerBorderTheme, createDiagonalGradient } from "../ThemeStyles";
 
-
 const NavBar = () => {
-const { navItems } = useNavigation();
+  const { navItems } = useNavigation();
   //function Background({ children }) { {children}
   // Shadow definitions
   //const shadowOuterDrop = '0 22px 60px rgba(0, 0, 0, 0.35)'; // outer drop shadow
@@ -17,43 +16,37 @@ const { navItems } = useNavigation();
   // const shadowLogoOuter = '0 12px 30px rgba(0, 0, 0, 0.35)'; // outer drop for logo
   // const shadowLogoInner = 'inset 0 1px 0 rgba(255, 255, 255, 0.08)'; // inset highlight for depth
   
-  const shadowLinkActive = '0 12px 28px rgba(63, 200, 198, 0.35)'; // active link glow
+  const shadowLinkActive = '0 12px 28px rgba(63, 200, 120, 0.35)'; // active link glow
   const shadowLinkActiveInner = '0 2px 8px rgba(0, 0, 0, 0.28)'; // active link inner shadow
 
-const navBorders = `1px solid rgba(255, 255, 255, 0.12)`; // subtle border outline
+  const navBorders = `1px solid rgba(255, 255, 255, 0.12)`; // subtle border outline
 
-const textShadow ={
-  textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px  1px 0 #000, 1px  1px 0 #000'
-}
+  const textShadow ={
+    textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px  1px 0 #000, 1px  1px 0 #000'
+  }
 
-const navShellStyle = {
-    fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif", // system font stack, overridden by browser defaults
-    //fontWeight: 400, // text boldness, overridden by child elements
-    width: '100%',              // fill parent without overflow
-  //maxWidth: '100%', // full viewport width, no override
-    //height: '100%', // full height of content, overridden by child content
-    minHeight: '4rem', // minimum navbar height, overridden by content if needed
-    maxHeight: '10rem', // maximum navbar height = 10% viewport, prevents excessive growth
-    margin: '0', // no margins, snaps to edges
-    padding: '0', // no external spacing
-    //paddingLeft: '1rem', // internal spacing, overridden by child padding
-    //paddingRight: '1.25rem', // internal spacing, overridden by child padding
-    display: 'flex', // flex layout for alignment
-    alignItems: 'center', // vertical center alignment
-    justifyContent: 'flex-start', // align items to the left
-    gap: '1rem', // spacing between flex children
-    background: createDiagonalGradient('#000000', '#919191'), //`linear-gradient(135deg, #0a150a, #101b10)`, // dark green gradient
-    border: navBorders, // subtle border
-    //borderRadius: '18px', // rounded corners
-    //boxShadow: `${shadowOuterDrop}, ${shadowInnerSmall} ${DarkTheme.MlmDark} 80`, // layered shadows for depth
-    ...ContainerBorderTheme,
-    position: 'sticky', // sticks to top on scroll
-    top: '0', // no offset from top
-    zIndex: 10, // above most content
-    boxSizing: 'border-box', // padding included in width calc
-    overflow: 'hidden', // hide content extending beyond edges
+  const navShellStyle = {
+      fontFamily: "'Segoe UI', system-ui, -apple-system, sans-serif", // system font stack, overridden by browser defaults
+      width: '100%',
+      minHeight: '10%', // minimum navbar height, overridden by content if needed
+      maxHeight: '20%', // maximum navbar height = 20% viewport, prevents excessive growth
+      margin: '0', // no margins, snaps to edges
+      padding: '0', // no external spacing
+      paddingLeft: '1rem', // internal spacing, overridden by child padding
+      //paddingRight: '1.25rem', // internal spacing, overridden by child padding
+      display: 'flex', // flex layout for alignment
+      alignItems: 'center', // vertical center alignment
+      justifyContent: 'flex-start', // align items to the left
+      gap: '.75rem', // spacing between flex children
+      background: createDiagonalGradient(`${DarkTheme.MlmDark}`, `rgba(31, 41, 31, .25)`), //`linear-gradient(135deg, rgba(22, 29, 22, 1), #101b10)`, // dark green gradient
+      border: navBorders, // subtle border
+      position: 'sticky', // sticks to top on scroll
+      top: '0', // no offset from top
+      zIndex: 10, // above most content
+      boxSizing: 'border-box', // padding included in width calc
+      overflow: 'hidden', // hide content extending beyond edges
+      ...ContainerBorderTheme,
   };
-
 
   //contains logo and company name
   const navBrandStyle = {
@@ -63,16 +56,6 @@ const navShellStyle = {
   };
   //contains logo image
   const navLogoStyle = {
-    //width: '60px', // fixed width, overridden by parent container if needed
-    //height: '60px', // fixed height, overridden by parent container if needed
-    //minWidth: '40px', // minimum width prevents shrinking below 52px
-    //minHeight: '40px', // minimum height prevents shrinking below 52px
-    //maxWidth: '80px', // maximum size to maintain navbar proportions
-    //maxHeight: '80px', // maximum size to maintain navbar proportions
-    //padding: '5px', // internal padding for spacing
-    //flexShrink: 0, // prevents flex parent from shrinking this element
-    //width: 'max(50px, 50%)', // responsive width
-    //height: '150%', // responsive height
     minHeight: '40px',// minimum height
     maxHeight: '75px', // maximum height
     aspectRatio: '1 / 1', // maintains square aspect ratio
@@ -104,13 +87,13 @@ const navShellStyle = {
     letterSpacing: '0.10em', // wide letter spacing for uppercase
     textTransform: 'uppercase', // converts text to all caps
     fontWeight: 800, // semibold weight
-    color: DarkTheme.MlmOrange, // green accent color
+    color: DarkTheme.MlmOrange, // text color
   };
 
   const navLinksStyle = {
     flex: 1, // takes remaining space after brand
     display: 'flex', // flex layout
-    justifyContent: 'flex-center',//'flex-start', // align items to the left
+    justifyContent: 'flex-start', // align items to the left
   };
 
   const navListStyle = {

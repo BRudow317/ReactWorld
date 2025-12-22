@@ -1,0 +1,136 @@
+/* Home.module.css */
+
+
+/*---------Colors----------------------------------------------------------------------------------------------*/
+
+/* --- THEME DEFINITIONS (CSS Variables) --- */
+:root {
+  --mlm-orange: rgb(226, 96, 24);
+  --mlm-light-orange: rgb(243, 110, 33);
+  --mlm-dark: rgb(0, 11, 0);
+  --mlm-black: rgb(0, 0, 0);
+  --mlm-green: rgb(105, 155, 95);
+  --mlm-gray: rgb(160, 163, 161);
+  --mlm-light-green: rgb(79, 187, 68);
+  --mlm-yellow: rgb(242, 178, 54);
+  --mlm-white: rgb(255, 255, 255);
+}
+
+.DarkModePallete {
+  background-color: var(--mlm-black);
+  color: var(--mlm-white);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.LightModePallete {
+  background-color: var(--mlm-white);
+  color: var(--mlm-dark);
+  border-color: rgb(20, 20, 20);
+}
+
+/* The Glass Visuals */
+.GlassyEffectDarkMode {
+  background-color: rgba(18, 18, 18, 0.45);  /* Very transparent dark tint */
+  backdrop-filter: blur(3px); /* The frost look */
+  -webkit-backdrop-filter: blur(3px); /* Safari Support */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem; /* Large rounded corners */
+  box-shadow: 25px 25px 50px -12px rgba(3, 54, 14, 0.5);
+}
+
+/* The Glass Visuals */
+.GlassyEffectLightMode {
+  background-color: rgba(130, 130, 130, 0.75);  /* Very transparent dark tint */
+  backdrop-filter: blur(2px); /* The frost look */
+  -webkit-backdrop-filter: blur(2px); /* Safari Support */
+  border: 1px solid rgba(52, 52, 52, 0.5);
+  border-radius: 1.5rem; /* Large rounded corners */
+  box-shadow: 25px 25px 50px -12px rgba(3, 54, 14, 0.25);
+}
+
+/*---------Content Containers----------------------------------------------------------------------------------------------*/
+
+.LayoutContainer {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.BackgroundWrapper { 
+    background-Image: url('../../assets/MlmFlag.jpg');
+    background-Attachment: fixed; 
+    background-Size: cover;
+    background-Position: center;
+    background-Repeat: no-repeat;
+    
+}
+
+.OuterContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;     
+  /* min-height: 80vh;  */
+  /* <div className={styles.OuterContainer}> */
+}
+
+.mainGlassWrapper {
+  /* Wrapper sizing */
+  width: auto;
+  max-width: 1024px;
+  min-width: 300px;
+  height: auto;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.BodyContainer {
+  flex: 1; /* Ensures it takes up remaining space */
+}
+
+
+/*-------------------------------------------------------------------------------------------------------*/
+.HeaderPrimaryWrapperStyle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(
+    to right, 
+    rgba(11, 9, 11, .3) 0%,   /* Left edge start color */
+    rgba(11, 9, 11, 1.0) 15%, /* Solid from here */
+    rgba(11, 9, 11, 1.0) 85%,  /* Fadeout from here */
+    rgba(11, 9, 11, .3) 100%  /* Right edge end color */
+  );
+  border-radius: 1.5rem;
+
+}
+.HeaderImgStyle {
+    width: 100%;
+    object-fit: contain;
+    max-height: 10rem;
+    height: 100%;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+
+/* Represents your 'ContainerBorderTheme' constant */
+.containerBorderTheme {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-radius: min(15px, 15%);
+}
+
+/* Represents 'createDiagonalGradient' function */
+.diagonalGradient {
+  /* Example usage: combine with variables */
+  background: linear-gradient(135deg, var(--mlm-green), var(--mlm-light-green));
+}
+
+/*-------------------------------------------------------------------------------------------------------*/

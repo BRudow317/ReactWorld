@@ -1,0 +1,84 @@
+/* DarkLightTheme.module.css */
+.MyColors {
+    --Mlm-Orange: #E26018,
+    --Mlm-Light-Orange: #F36E21,
+    --Mlm-Dark: #000B00,
+    --Mlm-Black: #000B00,
+    --Mlm-Green: #699B5F,
+    --Mlm-Gray: #a0a3a1,
+    --Mlm-Light-Green: #4FBB44,
+    --Mlm-Yellow: #F2B236,
+    --Mlm-White: #ffffff,
+};
+
+:global([data-theme="dark"]) {
+  --bg-primary: var(--Mlm-Black);
+  --text-primary: var(--Mlm-White);
+}
+
+/* Optional: Force Light Mode override */
+:global([data-theme="light"]) {
+  --bg-primary: var(--Mlm-White);
+  --text-primary: var(--Mlm-Black);
+}
+
+
+:root {
+  --bg-primary: var(--Mlm-White);
+  --text-primary: var(--Mlm-Black);
+  --text-secondary: var(--Mlm-Gray);
+  /* ... define all your light variables here ... */
+}
+
+.ContainerBorderTheme {
+    border: 1px solid rgba(255, 255, 255, 0.12); /* subtle outline, blends with dark backgrounds */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08); /* drop + inset highlight */
+    border-radius: min(15px, 15%); /* responsive rounded corners */
+};
+
+ /* Outer Div: The frosted glass card container */
+.glass-card {
+    /* Background & Transparency */
+    background-color: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px); /* Safari support */
+    
+    /* Shape & Shadow */
+    border-radius: 0.75rem; 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Spacing */
+    padding: 1.5rem;
+}
+
+/* Dark mode adjustment for the outer div */
+@media (prefers-color-scheme: dark) {
+    .glass-card {
+        background-color: rgba(31, 41, 55, 0.6);
+    }
+}
+
+/* Inner Div: The layout and alignment wrapper */
+.content-wrapper {
+    /* Sizing & Centering */
+    max-width: 64rem; 
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* Typography & Layout */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Vertical spacing logic for children inside the inner div */
+/* This replaces 'space-y-12' and 'space-y-4' */
+.content-wrapper > * + * {
+    margin-top: 3rem; /* The '12' spacing */
+}
+
+/* If you have even tighter spacing inside nested headers */
+.content-wrapper > .header-group > * + * {
+    margin-top: 1rem; /* The '4' spacing */
+}

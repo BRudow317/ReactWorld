@@ -1,13 +1,13 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+//import { Outlet } from "react-router-dom";
 //import { DarkTheme,LightTheme, ContainerBorderTheme, createDiagonalGradient } from "../ThemeStyles";
-const MainContent = function() {
+const Body = function({ children }) {
     return (
         <>
-            <div className="MainContent-container">
-                <Outlet />
+            <div className="Body-container">
+                {children}
             </div>
         </>
     );
 }
-export default MainContent;
+export default Body;
