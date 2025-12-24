@@ -46,7 +46,7 @@ html[data-theme="dark"] {
   --GlassyBorder: 1px solid var(--mlmGray);
   --GlassyBoxShadow: 25px 25px 50px -12px rgba(3, 54, 14, 0.5);
 
-  --GlassyBackgroundDarker: rgba(10, 12, 36, 0.75);
+  --GlassyBackgroundDarker: rgba(10, 12, 36, 0.4);
   --BackBlurDarker: blur(7px);
   --WebkitBackBlurDarker: blur(7px);
   --GlassyBorderDarker: 1px solid var(--mlmGray);
@@ -63,7 +63,7 @@ html[data-theme="light"] {
   --GlassyBorder: 1px solid var(--mlmGray);
   --GlassyBoxShadow: 25px 25px 50px -12px rgba(3, 54, 14, 0.25);
 
-  --GlassyBackgroundDarker: rgba(134, 134, 134, 0.75);
+  --GlassyBackgroundDarker: rgba(134, 134, 134, 0.4);
   --BackBlurDarker: blur(3px);
   --WebkitBackBlurDarker: blur(3px);
   --GlassyBorderDarker: 1px solid var(--mlmDark);

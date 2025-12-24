@@ -17,7 +17,20 @@ export function HomeServicesCardGrid() {
   return (
     <div
       style={{
-        backgroundColor: "var(--GlobalBackground)",
+        background: "var(--mlmNavy)",
+        color: "var(--GlobalTextColor)",
+        borderLeft: "1px solid var(--mlmOrange)",
+        borderRight: "1px solid var(--mlmOrange)",
+        borderTop: "1px solid var(--mlmOrange)",
+        borderBottom: "none",
+        /* remove glow so the seam between sections doesn't show */
+        boxShadow: "none",
+        borderTopLeftRadius: "16px",
+        borderTopRightRadius: "16px",
+        borderBottomLeftRadius: "0",
+        borderBottomRightRadius: "0",
+        padding: "24px",
+        margin: "0",
       }}
     >
       <ServicesCardGrid

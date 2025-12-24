@@ -24,6 +24,17 @@
   overflow: hidden;
 }
 
+.navKickerBar {
+  display: none;
+  width: 100%;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--mlmOrange);
+  margin: 0 0 6px 0;
+}
+
 .navBrand {
   display: flex;
   align-items: center;
@@ -42,7 +53,7 @@
 }
 
 /* Hide logo on ultra-small screens for more nav button space */
-@media (max-width: 380px) {
+@media (max-width: 340px) {
   .navLogo {
     display: none;
   }
@@ -89,7 +100,7 @@
 }
 
 /* Ultra-small screens: shrink logo further */
-@media (max-width: 380px) {
+@media (max-width: 340px) {
   .navLogo {
     min-height: 24px;
     max-height: 40px;
@@ -109,6 +120,10 @@
 @media (max-width: 600px) {
   .navMeta {
     display: none;
+  }
+
+  .navKickerBar {
+    display: block;
   }
 }
 
@@ -159,8 +174,8 @@
   font-weight: 400;
   text-shadow: none;
   background: #050611;
-  border: 3px solid var(--mlmTextColor);
-  box-shadow: var(--itemGlowBoxShadow);
+  border: 1px solid var(--mlmWhite);
+  box-shadow: none;
   transition: all 200ms ease;
 }
 
@@ -170,7 +185,7 @@
   font-weight: 700;
   /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
   border: 1px solid var(--mlmLightGreen);
-  box-shadow: var(--itemGlowBoxShadow);
+  box-shadow: none;
   outline-offset: 2px;
 }
 
@@ -180,7 +195,8 @@
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   background: var(--mlmLightGreen);
   /* box-shadow: 0 12px 28px rgba(63, 200, 120, 0.35), 0 2px 8px rgba(0, 0, 0, 0.28); */
-  border: 2px solid #050611;
+  border: 1px solid var(--mlmWhite);
+  box-shadow: var(--itemGlowBoxShadow);
 }
 
 .active:hover {

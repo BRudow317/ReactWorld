@@ -212,19 +212,6 @@ export const CarouselCard = ({
             ›
           </button>
 
-          <div style={styles.indicators}>
-            {items.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                style={{
-                  ...styles.dot,
-                  ...(index === currentIndex ? styles.dotActive : {}),
-                }}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
         </>
       )}
     </div>

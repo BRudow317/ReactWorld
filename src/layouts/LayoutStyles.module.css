@@ -84,3 +84,12 @@
 .diagonalGradient {
   background: linear-gradient(135deg, rgb(105, 155, 95), rgb(79, 187, 68));
 }
+
+/* Footer styles */
+.FooterContainer {
+  background: var(--mlmNavy);
+  padding: 1rem;
+  text-align: center;
+  border-radius: 16px;
+  margin-top: 24px;
+}

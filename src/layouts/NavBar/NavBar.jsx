@@ -7,7 +7,9 @@ const NavBar = () => {
   const { navItems } = useNavigation();
 
   return (
-    <header className={styles.navShell}>
+    <>
+      <div className={styles.navKickerBar}>Miller Land Management</div>
+      <header className={styles.navShell}>
       <div className={styles.navBrand}>
         <NavLink
           to="/"
@@ -42,7 +44,8 @@ const NavBar = () => {
           ))}
         </ul>
       </nav>
-    </header>
+      </header>
+    </>
   );
 };
 

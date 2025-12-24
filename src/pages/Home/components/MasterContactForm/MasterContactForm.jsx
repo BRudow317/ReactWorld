@@ -1,5 +1,5 @@
 // MasterContactForm.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MapPin, Search, AlertTriangle, ChevronDown } from "lucide-react";
 import MasterFormStyles from "./MasterFormStyles.module.css";
 import { DEFAULT_SERVICES } from "../../../..";
@@ -10,7 +10,9 @@ import { useAddressAutocomplete, DEV_API_KEY } from "../../../..";
  * - Uses CSS Module (MasterFormStyles.module.css)
  * - No global class strings
  */
-export function MasterContactForm({ serviceType }) {
+export function MasterContactForm({ serviceType, mergeTop = false }) {
+  const shellRef = useRef(null);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,6 +35,7 @@ export function MasterContactForm({ serviceType }) {
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     defaultCenter,
     maxSuggestions: 5,
+    debounceMs: 400,
     onLocationSelected: (location) => {
       setFormData((prev) => ({ ...prev, address: location.address }));
     },
@@ -43,6 +46,27 @@ export function MasterContactForm({ serviceType }) {
     formData.serviceType === "" || formData.serviceType === "Describe" 
   );
 }, [formData.serviceType]);
+
+  // Debug helper: log padding/margin of this form and its ancestors when enabled
+  useEffect(() => {
+    if (!import.meta.env.VITE_DEBUG_FORM_SPACING) return;
+    if (!shellRef.current) return;
+
+    const chain = [];
+    let node = shellRef.current;
+    while (node) {
+      const cs = window.getComputedStyle(node);
+      chain.push({
+        tag: node.tagName,
+        className: node.className,
+        padding: cs.padding,
+        margin: cs.margin,
+      });
+      node = node.parentElement;
+    }
+    // eslint-disable-next-line no-console
+    console.table(chain);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -128,7 +152,11 @@ export function MasterContactForm({ serviceType }) {
 
   return (
     <section
-      className={MasterFormStyles.mlmMasterFormShell}
+      className={[
+        MasterFormStyles.mlmMasterFormShell,
+        mergeTop ? MasterFormStyles.mlmMasterFormShellMergedTop : ""
+      ].join(" ")}
+      ref={shellRef}
       aria-label="Service request form"
     >
       <header className={MasterFormStyles.mlmMasterFormHeader}>

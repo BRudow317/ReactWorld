@@ -14,6 +14,7 @@ export function useAddressAutocomplete({
   const googleMapRef = useRef(null);
   const markerRef = useRef(null);
   const debounceRef = useRef(null);
+  const mapInitializedRef = useRef(false);
 
   const [address, setAddress] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -28,8 +29,23 @@ export function useAddressAutocomplete({
   );
 
   const initMap = useCallback(() => {
-    if (!mapRef.current || !window.google?.maps) return;
+    console.log('initMap called:', {
+      hasMapRef: !!mapRef.current,
+      hasGoogleMaps: !!window.google?.maps,
+      alreadyInitialized: mapInitializedRef.current
+    });
+    
+    if (mapInitializedRef.current) {
+      console.log('Map already initialized, skipping...');
+      return;
+    }
+    
+    if (!mapRef.current || !window.google?.maps) {
+      console.log('Cannot initialize map - missing refs or Google Maps API');
+      return;
+    }
 
+    console.log('Creating Google Map instance...');
     googleMapRef.current = new window.google.maps.Map(mapRef.current, {
       center: defaultCenter,
       zoom: 12,
@@ -38,10 +54,14 @@ export function useAddressAutocomplete({
       fullscreenControl: false,
     });
 
+    console.log('Creating marker...');
     markerRef.current = new window.google.maps.Marker({
       map: googleMapRef.current,
       position: defaultCenter,
     });
+    
+    mapInitializedRef.current = true;
+    console.log('Map initialized successfully');
   }, [defaultCenter]);
 
   useEffect(() => {
@@ -70,8 +90,17 @@ export function useAddressAutocomplete({
 
 
   useEffect(() => {
-    if (!selectedLocation || !googleMapRef.current || !markerRef.current) return;
+    if (!selectedLocation || !googleMapRef.current || !markerRef.current) {
+      console.log('Map update skipped:', {
+        hasSelectedLocation: !!selectedLocation,
+        hasGoogleMapRef: !!googleMapRef.current,
+        hasMarkerRef: !!markerRef.current,
+        selectedLocation
+      });
+      return;
+    }
 
+    console.log('Updating map to:', selectedLocation);
     const position = { lat: selectedLocation.lat, lng: selectedLocation.lng };
     googleMapRef.current.setCenter(position);
     googleMapRef.current.setZoom(15);
@@ -87,7 +116,6 @@ export function useAddressAutocomplete({
     (e) => {
       const value = e.target.value;
       setAddress(value);
-      setSelectedLocation(null);
 
       if (value.trim().length < 3) {
         setIsLoading(false);
@@ -106,6 +134,7 @@ export function useAddressAutocomplete({
               searchAddress: value,
               maxSuggestions,
             });
+
             setSuggestions(results);
             setActiveIndex(results.length > 0 ? 0 : -1);
           }
@@ -122,8 +151,10 @@ export function useAddressAutocomplete({
 
   const handleSelectSuggestion = useCallback(
     (suggestion) => {
+      console.log('Suggestion selected:', suggestion);
       setAddress(suggestion.address);
       const loc = { lat: suggestion.lat, lng: suggestion.lng, address: suggestion.address };
+      console.log('Setting location to:', loc);
       setSelectedLocation(loc);
 
       clearSuggestions();
@@ -145,7 +176,7 @@ export function useAddressAutocomplete({
       setIsFocused(false);
       setIsLoading(false);
       clearSuggestions();
-    }, 120);
+    }, 200);
   }, [clearSuggestions]);
 
   const handleKeyDown = useCallback(

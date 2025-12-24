@@ -24,11 +24,15 @@ export default function Home() {
     <HomeCarouselCard />
     <div
           style={{
-            backgroundColor: "var(--GlassyBackgroundDarker)",
-            backdropFilter: "var(--BackBlurDarker)",
-            WebkitBackdropFilter: "var(--WebkitBackBlurDarker)",
-            border: "var(--GlassyBorderDarker)",
-            boxShadow: "var(--GlassyBoxShadowDarker)"
+            backgroundColor: "transparent",
+            backdropFilter: "none",
+            WebkitBackdropFilter: "none",
+            border: "none",
+            boxShadow: "none",
+            marginTop: "24px",
+            marginInline: "clamp(6px, 3vw, 16px)",
+            padding: "clamp(10px, 3vw, 16px)",
+            borderRadius: "0"
           }}
         >
           <HomeServicesCardGrid
@@ -36,7 +40,8 @@ export default function Home() {
             onSelectService={(serviceTitle) => setSelectedService(serviceTitle)}
           />
           <MasterContactForm 
-            serviceType = {selectedService}
+            serviceType={selectedService}
+            mergeTop
           />
           
         </div>

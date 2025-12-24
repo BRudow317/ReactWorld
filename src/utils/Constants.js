@@ -1,4 +1,4 @@
-import { Wrench, Hammer, Shovel, Truck, Trees, Trash2, LandPlot, Construction, Home } from "lucide-react";
+import { Wrench, Hammer, Shovel, Truck, Trees, Trash2, LandPlot, Construction, Home, CarFront } from "lucide-react";
 
 const DEFAULT_SERVICES = [
   { id: "emergency-repairs", title: "Emergency Repairs", Icon: Wrench },
@@ -9,7 +9,7 @@ const DEFAULT_SERVICES = [
   { id: "material-sales", title: "Material Sales (Mulch/Topsoil/Sand/Gravel/Crushed Stone/Cobblestone)", Icon: Construction },
   { id: "hauling", title: "Hauling Services", Icon: Truck },
   { id: "foundation-digging", title: "Residential & Commercial Foundation Digging", Icon: Shovel },
-  { id: "driveway", title: "Driveway Construction", Icon: Construction },
+  { id: "driveway", title: "Driveway Construction", Icon: CarFront },
 ];
 /**
  * Default service catalog (9 offerings).

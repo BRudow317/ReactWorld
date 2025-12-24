@@ -16,7 +16,10 @@ const Layout = () => {
           <div className={` 
             GlassyEffect 
             ${LayoutStyles.GlassWrapper }
-          `} style={{backgroundColor: "var(--GlassyBackgroundDarker)"}}>
+          `} style={{
+            backgroundColor: "var(--GlassyBackgroundDarker)",
+            border: "none"
+          }}>
             <Header />
             <Body>
               <Outlet />
