@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { MapPin, Search } from "lucide-react";
-import { useTheme } from "../../../../themes/ThemeContext";
 import { AddressAutocompleteStyles } from "./AddressAutocomplete.css";
 import { useAddressAutocomplete } from "./useAddressAutocomplete.hook.js";
+//import GlobalTokens from "../../../../";
 
 /**
  * AddressAutocomplete (View)
@@ -17,7 +17,6 @@ export const AddressAutocomplete = ({
   maxSuggestions = 3,
   onLocationSelected, // optional: (location) => void
 }) => {
-  const { theme } = useTheme();
 
   const {
     address,
@@ -40,8 +39,8 @@ export const AddressAutocomplete = ({
   });
 
   const styles = useMemo(
-    () => AddressAutocompleteStyles({ theme, isFocused }),
-    [theme, isFocused]
+    () => AddressAutocompleteStyles({ isFocused }),
+    [ isFocused]
   );
 
   const showSuggestions = suggestions.length > 0;

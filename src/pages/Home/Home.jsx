@@ -1,27 +1,48 @@
 import React, { useState, useEffect } from "react";
+import { ServicesCardGrid } from "./components/ServicesCardGrid/ServicesCardGrid";
 import { 
   //AddressAutocomplete, 
-  AddressAutocompleteExample,
-  //ServicesCardGrid,
-  ServicesCardGridExample,
-  //ServiceCard,
+  AddressAutocompleteExample
+} from "./components/AddressAutocomplete/AddressAutocomplete.example";
+import { HomeServicesCardGrid } from "./components/ServicesCardGrid/HomeServicesCard.jsx";
+import {
   //CarouselCard,
-  CarouselCardDemo,
+  // CarouselCardDemo,
   HomeCarouselCard
-} from "./";
+} from "./components/CarouselCard/HomeCarouselCard";
+//import { CustomerFormExample } from "./components/CustomerForm/CustomerForm.example.jsx";
+import { MasterContactForm } from "./components/MasterContactForm/MasterContactForm.jsx";
 
 
-import { useTheme } from "../../themes/ThemeContext"; 
+
+
 
 export default function Home() {
-  const { theme, toggleTheme } = useTheme();
+  const [selectedService, setSelectedService] = useState("");
   return (
   <>
-    <HomeCarouselCard colorMode={theme} />
-    <h2>Services Card Grid Example</h2>
-    <ServicesCardGridExample colorMode={theme} />
-    <h2>Address Form Example </h2>
-    <AddressAutocompleteExample colorMode={theme} />
+    <HomeCarouselCard />
+    <div
+          style={{
+            backgroundColor: "var(--GlassyBackgroundDarker)",
+            backdropFilter: "var(--BackBlurDarker)",
+            WebkitBackdropFilter: "var(--WebkitBackBlurDarker)",
+            border: "var(--GlassyBorderDarker)",
+            boxShadow: "var(--GlassyBoxShadowDarker)"
+          }}
+        >
+          <HomeServicesCardGrid
+            quoteSectionId="get-quote"
+            onSelectService={(serviceTitle) => setSelectedService(serviceTitle)}
+          />
+          <MasterContactForm 
+            serviceType = {selectedService}
+          />
+          
+        </div>
+    <div>
+      
+    </div>
   </>
   );
 }

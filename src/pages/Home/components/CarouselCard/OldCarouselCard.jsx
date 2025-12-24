@@ -1,57 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useTheme } from "../../../../themes/ThemeContext"; // keep your existing path
 import { CarouselStyles } from "./CarouselStyles";
-// import { CarouselCard } from "./CarouselCard";
-import * as CMI from "../../../../assets/CarouselMedia";
-//import { CarouselStyles } from "./CarouselStyles";
-/**
- * Demo implementation showing how to use the component
- */
-export const HomeCarouselCard = () => {
-  // Example media items array
-  const mediaItems = [
-    {
-      type: 'image',
-      src: CMI.IndianapolisCityScape,
-      alt: 'Indianapolis city skyline',
-    },
-    {
-      type: 'image',
-      src: CMI.WaterProofingFoundation,
-      alt: 'Waterproofing foundation',
-    },
-    {
-      type: 'image',
-      src: CMI.FoundationDamage,
-      alt: 'Foundation damage',
-    },
-    {
-      type: 'image',
-      src: CMI.basementWaterDamage,
-      alt: 'Basement water damage',
-    },
-    {
-      type: 'image',
-      src: CMI.ClawDroppingDirt,
-      alt: 'Claw dropping dirt',
-    },
-    {
-      type: 'image',
-      src: CMI.ClawInSun,
-      alt: 'Claw in sunlight',
-    },
-  ];
 
-  return (
-      <CarouselCard 
-        items={mediaItems} 
-        cardWidth={"100%"} 
-        cardHeight={"100%"}
-        autoPlay={true}
-        autoPlayInterval={20000}
-      /> 
-  );
-};
 /**
  * CarouselCard Component
  * A reusable carousel component that displays images and videos in card format
@@ -162,11 +112,11 @@ export const CarouselCard = ({
   return (
     <div style={styles.carouselContainer}>
       {/* Main card container with overflow hidden for slide effect */}
-      <div style={styles.cardContainer()}>
+      <div style={styles.cardContainer({ cardWidth, cardHeight })}>
         {/* Slides wrapper - translates horizontally to show current slide */}
-        <div style={styles.slidesWrapper({ currentIndex, items })}>
+        <div style={styles.slidesWrapper({ currentIndex })}>
           {items.map((item, index) => (
-            <div key={index} style={styles.slide({ items })}>
+            <div key={index} style={styles.slide({ cardWidth, cardHeight })}>
               {loadedMedia.has(index) ? (
                 item.type === "video" ? (
                   <video

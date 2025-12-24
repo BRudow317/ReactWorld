@@ -1,38 +1,31 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { NavBar, Header, Footer, Body, LayoutStyles } from ".";
-import { useTheme } from "../themes/ThemeContext";
+import NavBar from "./NavBar/NavBar";
+import Header from "./Sections/Header";
+import Footer from "./Sections/Footer";
+import Body from "./Sections/Body";
+import LayoutStyles from "./LayoutStyles.module.css";
 
 const Layout = () => {
-  // Hooks are called first.
-  const { theme } = useTheme();
-  console.log("Current Theme: ", theme);
   return (
-    <>
-      <div
-        id="Layout"
-        className={`
-            ${LayoutStyles.LayoutContainer} 
-            ${ theme === "dark" ? LayoutStyles.DarkModePallete : LayoutStyles.LightModePallete } 
-      `}>
-        <div className={LayoutStyles.BackgroundWrapper}>
-          <div className={LayoutStyles.OuterContainer}>
+    <div id="Layout" className={LayoutStyles.LayoutContainer}>
+      <div className={LayoutStyles.BackgroundWrapper}>
+        <div className={LayoutStyles.OuterContainer}>
           <NavBar />
-          
-            <div className={` 
-            ${LayoutStyles.mainGlassWrapper} 
-            ${ theme === "dark" ? LayoutStyles.GlassyEffectDarkMode : LayoutStyles.GlassyEffectLightMode }
-            `}>
+
+          <div className={` 
+            GlassyEffect 
+            ${LayoutStyles.GlassWrapper }
+          `} style={{backgroundColor: "var(--GlassyBackgroundDarker)"}}>
             <Header />
             <Body>
               <Outlet />
             </Body>
             <Footer />
-            </div>
-        </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

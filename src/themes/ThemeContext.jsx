@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 // 1. Create the "Channel" src\themes\ThemeContext.jsx
 const ThemeContext = createContext();
@@ -19,7 +19,7 @@ export function ThemeProvider({ children }) {
       </ThemeContext.Provider>
     </>
   );
-}
+};
 
 // Returns 
 export const useTheme = () => {
@@ -28,4 +28,15 @@ export const useTheme = () => {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
+};
+
+export function ThemeDomSync() {
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    // Apply theme globally
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  return null;
 };

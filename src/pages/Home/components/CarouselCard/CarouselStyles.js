@@ -1,64 +1,73 @@
-import { GlobalCSS } from "../../../../layouts";
+// import { GlobalCSS } from "../../../../";
 
 /**
  * Pure style factory (NO hooks here).
- * Pass theme + any dynamic values via helper functions.
+ * All sizing is dynamic (100%) to fill the parent container.
  */
-export const CarouselStyles = ({ theme }) => {
-  const isDark = theme === "dark";
-
+export const CarouselStyles = () => {
   return {
-    // Main container - centers the carousel
+    // Main container - fills parent with flex: 1; aspect enforced at card level
     carouselContainer: {
       position: "relative",
       display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      margin: "20px auto",
-      maxWidth: "100%",
+      flex: 1,
+      width: "100%",
+      height: "100%",
+      alignItems: "stretch",
     },
 
     /**
      * Card container - clips overflow to hide off-screen slides
-     * Dynamic sizing moved here to keep CarouselCard.jsx clean.
+     * Fills parent container with flex: 1
      */
-    cardContainer: ({ cardWidth, cardHeight }) => ({
+    cardContainer: () => ({
       position: "relative",
       overflow: "hidden",
       borderRadius: "12px",
       boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-      backgroundColor: isDark ? GlobalCSS.GlobalColors.mlmBlack : GlobalCSS.GlobalColors.mlmWhite,
-      width: cardWidth,
-      height: cardHeight,
+      backgroundColor: "var(--GlassyBackground)",
+      width: "100%",
+      height: "auto",
+      aspectRatio: "16 / 9",
+      maxHeight: "80vh",
+      flex: 1,
     }),
 
     /**
      * Slides wrapper - translate based on currentIndex
-     * Transform logic moved here to keep JSX minimal.
+     * Width must accommodate all slides horizontally
+     * Height stretches to fill card
      */
-    slidesWrapper: ({ currentIndex }) => ({
-      display: "flex",
-      transition: "transform 0.5s ease-in-out",
-      height: "100%",
-      transform: `translateX(-${currentIndex * 100}%)`,
-    }),
+    slidesWrapper: ({ currentIndex, items }) => {
+      const slidePercentage = items?.length ? (currentIndex / items.length) * 100 : 0;
+      return {
+        display: "flex",
+        transition: "transform 0.5s ease-in-out",
+        width: items?.length ? `${items.length * 100}%` : "100%",
+        height: "100%",
+        transform: `translateX(-${slidePercentage}%)`,
+      };
+    },
 
-    // Individual slide container - also sized consistently
-    slide: ({ cardWidth, cardHeight }) => ({
-      flexShrink: 0,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: isDark ? GlobalCSS.GlobalColors.mlmBlack : GlobalCSS.GlobalColors.mlmWhite,
-      width: cardWidth,
-      height: cardHeight,
-    }),
+    // Individual slide container - takes 1/n of wrapper width
+    slide: ({ items }) => {
+      const slideWidth = items?.length ? `calc(100% / ${items.length})` : "100%";
+      return {
+        flexShrink: 0,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "var(--GlassyBackground)",
+        width: slideWidth,
+        height: "100%",
+      };
+    },
 
-    // Media element (image/video) - object-fit ensures proper scaling
+    // Media element (image/video) - stretches to fill slide
     media: {
       width: "100%",
       height: "100%",
-      objectFit: "contain",
+      objectFit: "cover", // stretch to fill the available space
       display: "block",
     },
 
@@ -69,7 +78,7 @@ export const CarouselStyles = ({ theme }) => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      color: isDark ? GlobalCSS.GlobalColors.mlmWhite : GlobalCSS.GlobalColors.mlmBlack,
+      color: "var(--GlobalTextColor)",
       fontSize: "18px",
     },
 
@@ -78,8 +87,8 @@ export const CarouselStyles = ({ theme }) => {
       position: "absolute",
       top: "50%",
       transform: "translateY(-50%)",
-      backgroundColor: isDark ? "rgba(0, 0, 0, 0.75)" : "rgba(255, 255, 255, 0.85)",
-      color: isDark ? GlobalCSS.GlobalColors.mlmWhite : GlobalCSS.GlobalColors.mlmBlack,
+      backgroundColor: "var(--GlassyBackground)",
+      color: "var(--GlobalTextColor)",
       border: "1px solid rgba(255, 255, 255, 0.12)",
       borderRadius: "50%",
       width: "40px",
@@ -121,7 +130,7 @@ export const CarouselStyles = ({ theme }) => {
       height: "10px",
       borderRadius: "50%",
       border: "none",
-      backgroundColor: isDark ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)",
+      backgroundColor: "var(--GlobalTextColor)",
       cursor: "pointer",
       transition: "background-color 0.3s",
       padding: 0,
@@ -129,14 +138,14 @@ export const CarouselStyles = ({ theme }) => {
 
     // Active dot indicator
     dotActive: {
-      backgroundColor: isDark ? "rgba(255, 255, 255, 1)" : "rgba(0, 0, 0, 1)",
+      backgroundColor: "var(--GlobalTextColor)",
     },
 
     // Empty state message
     emptyState: {
       padding: "40px",
       textAlign: "center",
-      color: isDark ? "rgba(255,255,255,0.75)" : "rgba(0,0,0,0.55)",
+      color: "var(--GlobalTextColor)",
       fontSize: "18px",
     },
   };

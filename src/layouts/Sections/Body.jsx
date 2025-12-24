@@ -1,10 +1,10 @@
 import React from "react";
-//import { Outlet } from "react-router-dom";
-//import { DarkTheme,LightTheme, ContainerBorderTheme, createDiagonalGradient } from "../ThemeStyles";
+import LayoutStyles from "../LayoutStyles.module.css";
+
 const Body = function({ children }) {
     return (
         <>
-            <div className="Body-container">
+            <div className={LayoutStyles.BodyContainer}>
                 {children}
             </div>
         </>

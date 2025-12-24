@@ -1,15 +1,17 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, useTheme } from './themes/ThemeContext';
-import { Layout } from './layouts';
+import { ThemeProvider, ThemeDomSync } from './themes/ThemeContext';
+import Layout from './layouts/Layout';
 import { Home, Services, Knowledge, Account } from './pages';
 import { ROUTES } from './api';
+import './themes/Styles/GlobalTokens.css';
 
 createRoot(document.getElementById("root")).render(
   <>
     <React.StrictMode>
       <ThemeProvider>
+      <ThemeDomSync />
       <BrowserRouter>
         <Routes>
             {/* Parent Route controls the Layout */}

@@ -17,8 +17,7 @@ export {
   NAV_ITEMS,
   ROUTES,
   CUSTOMER_API_ENDPOINTS,
-  AUTH_ENDPOINTS,
-  THIRD_PARTY_API_ENDPOINTS,
+  AUTH_ENDPOINTS
 } from "./endpoints/endpoints";
 
 // Security/Auth services

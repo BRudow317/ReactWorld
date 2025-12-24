@@ -5,8 +5,4 @@ export { default as Header } from "./Sections/Header";
 export { default as Body } from "./Sections/Body";
 export { default as Footer } from "./Sections/Footer";
 
-// Styles
-export * as fonts from "./Styles/fonts.css";
-export * as indexCSS from "./Styles/index.css";
-export * as LayoutStyles from "./Styles/Layout.module.css";
-export { GlobalCSS } from "./Styles/GlobalCss";
+export * as LayoutStyles from "./LayoutStyles.module.css";

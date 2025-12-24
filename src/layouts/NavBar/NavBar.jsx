@@ -9,10 +9,15 @@ const NavBar = () => {
   return (
     <header className={styles.navShell}>
       <div className={styles.navBrand}>
-        <div className={styles.navLogo} aria-hidden="true">
+        <NavLink
+          to="/"
+          end
+          className={styles.navLogo}
+          aria-label="Go to Miller Land Management home"
+        >
           {/* Stable: always show the icon image */}
           <img src={icon} alt="Miller Land Management" className={styles.navLogoImg} />
-        </div>
+        </NavLink>
         <div className={styles.navMeta}>
           <span className={styles.navKicker}>Miller Land Management</span>
         </div>
