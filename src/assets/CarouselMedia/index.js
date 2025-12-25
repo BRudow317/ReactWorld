@@ -1,7 +1,7 @@
-// Export all carousel media assets
-export { default as basementWaterDamage } from './basementWaterDamage.jpg';
-export { default as ClawDroppingDirt } from './ClawDroppingDirt.jpg';
-export { default as ClawInSun } from './ClawInSun.jpg';
-export { default as FoundationDamage } from './FoundationDamage.jpg';
-export { default as IndianapolisCityScape } from './IndianapolisCityScape.jpg';
-export { default as WaterProofingFoundation } from './WaterProofingFoundation.jpg';
+// Named exports for home carousel media assets
+export { default as AfterYard } from "./AfterYard.jpg";
+export { default as ClawDroppingDirt } from "./ClawDroppingDirt.jpg";
+export { default as MlmBeforeAfter } from "./MlmBeforeAfter.jpg";
+export { default as MlmMandRalphie } from "./MlmMandRalphie.jpg";
+export { default as MlmYardPipe } from "./MlmYardPipe.jpg";
+export { default as MlmYardPipeAfter } from "./MlmYardPipeAfter.jpg";

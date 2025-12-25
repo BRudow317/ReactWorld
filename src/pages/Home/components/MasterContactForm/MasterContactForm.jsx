@@ -12,6 +12,8 @@ import { useAddressAutocomplete, DEV_API_KEY } from "../../../..";
  */
 export function MasterContactForm({ serviceType, mergeTop = false }) {
   const shellRef = useRef(null);
+  const iframeContainerRef = useRef(null);
+  const customMessageRef = useRef(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -26,6 +28,7 @@ export function MasterContactForm({ serviceType, mergeTop = false }) {
   const [showCustomMessage, setShowCustomMessage] = useState(false);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [shouldPlayFbVideo, setShouldPlayFbVideo] = useState(false);
 
   const serviceTypes = DEFAULT_SERVICES;
 
@@ -46,6 +49,41 @@ export function MasterContactForm({ serviceType, mergeTop = false }) {
     formData.serviceType === "" || formData.serviceType === "Describe" 
   );
 }, [formData.serviceType]);
+
+  // Populate customMessage when serviceType prop changes (from clicking a service card)
+  useEffect(() => {
+    console.log("MasterContactForm received serviceType:", serviceType);
+    if (serviceType && serviceType.trim()) {
+      console.log("Populating form with service:", serviceType);
+      setShowCustomMessage(true);
+      setFormData((prev) => ({
+        ...prev,
+        serviceType: "",
+        customMessage: serviceType,
+      }));
+    }
+  }, [serviceType]);
+
+  // Start/stop FB embed when scrolled into view
+  useEffect(() => {
+    const node = iframeContainerRef.current;
+    if (!node || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setShouldPlayFbVideo(entry.isIntersecting),
+      {
+        threshold: 0.2, // start playback a bit earlier
+        rootMargin: "100px 0px 200px 0px", // pre-trigger before fully in view
+      }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  const fbBaseSrc =
+    "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1438938453892064%2F&show_text=false&width=320&t=0";
+  const fbAutoplaySrc = `${fbBaseSrc}&autoplay=1&muted=1&loop=1&playsinline=1`;
 
   // Debug helper: log padding/margin of this form and its ancestors when enabled
   useEffect(() => {
@@ -84,32 +122,38 @@ export function MasterContactForm({ serviceType, mergeTop = false }) {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    // TODO: Reinstate name validation
+    // if (!formData.name.trim()) newErrors.name = "Name is required";
 
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Invalid email format";
-    }
+    // TODO: Reinstate email validation
+    // if (!formData.email.trim()) newErrors.email = "Email is required";
+    // else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+    //   newErrors.email = "Invalid email format";
+    // }
 
-    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
-    else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ""))) {
-      newErrors.phone = "Phone must be 10 digits";
-    }
+    // TODO: Reinstate phone validation
+    // if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    // else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ""))) {
+    //   newErrors.phone = "Phone must be 10 digits";
+    // }
 
-    if (!showCustomMessage && !formData.serviceType) {
-      newErrors.serviceType = "Please select a service type";
-    }
+    // TODO: Reinstate service type validation
+    // if (!showCustomMessage && !formData.serviceType) {
+    //   newErrors.serviceType = "Please select a service type";
+    // }
 
-    if (showCustomMessage && !formData.customMessage.trim()) {
-      newErrors.customMessage = "Please provide details about your needs";
-    }
+    // TODO: Reinstate custom message validation
+    // if (showCustomMessage && !formData.customMessage.trim()) {
+    //   newErrors.customMessage = "Please provide details about your needs";
+    // }
 
-    if (!addressAutocomplete.address.trim()) {
-      newErrors.address = "Address is required";
-    }
+    // TODO: Reinstate address validation
+    // if (!addressAutocomplete.address.trim()) {
+    //   newErrors.address = "Address is required";
+    // }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return true;
   };
 
   const handleSubmit = () => {
@@ -152,6 +196,7 @@ export function MasterContactForm({ serviceType, mergeTop = false }) {
 
   return (
     <section
+      id="get-quote"
       className={[
         MasterFormStyles.mlmMasterFormShell,
         mergeTop ? MasterFormStyles.mlmMasterFormShellMergedTop : ""
@@ -240,7 +285,8 @@ export function MasterContactForm({ serviceType, mergeTop = false }) {
             <label htmlFor="serviceType" className={MasterFormStyles.mlmLabel}>
               Service Type <span className={MasterFormStyles.mlmRequired}>*</span>
             </label>
-            <button
+            {/* TODO: Restore dropdown toggle button once dropdown service selection is fully implemented */}
+            {/* <button
               type="button"
               onClick={() => {
                 const next = !showCustomMessage;
@@ -254,7 +300,7 @@ export function MasterContactForm({ serviceType, mergeTop = false }) {
               className={MasterFormStyles.mlmLinkButton}
             >
               {showCustomMessage ? "Show dropdown" : "Custom message"}
-            </button>
+            </button> */}
           </div>
 
           {!showCustomMessage ? (
@@ -280,6 +326,7 @@ export function MasterContactForm({ serviceType, mergeTop = false }) {
 </select>
 
               <ChevronDown
+                ref={customMessageRef}
                 className={MasterFormStyles.mlmSelectIcon}
                 size={20}
                 aria-hidden="true"
@@ -435,6 +482,21 @@ export function MasterContactForm({ serviceType, mergeTop = false }) {
         </div>
           <div className={MasterFormStyles.mlmMapShell}>
             <div ref={addressAutocomplete.mapRef} className={MasterFormStyles.mlmMap} />
+          </div>
+
+          <div style={{ marginTop: "16px" }} ref={iframeContainerRef}>
+            <iframe
+              title="Facebook video"
+              src={shouldPlayFbVideo ? fbAutoplaySrc : fbBaseSrc}
+              width="100%"
+              height="480"
+              style={{ border: "none", overflow: "hidden", maxWidth: "420px" }}
+              scrolling="no"
+              frameBorder="0"
+              allow="autoplay; encrypted-media; picture-in-picture; web-share; fullscreen"
+              loading="lazy"
+              allowFullScreen
+            />
           </div>
         </div>
 

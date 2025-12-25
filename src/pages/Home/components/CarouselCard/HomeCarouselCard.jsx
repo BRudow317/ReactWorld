@@ -12,33 +12,33 @@ export const HomeCarouselCard = () => {
   const mediaItems = [
     {
       type: 'image',
-      src: CMI.IndianapolisCityScape,
-      alt: 'Indianapolis city skyline',
-    },
-    {
-      type: 'image',
-      src: CMI.WaterProofingFoundation,
-      alt: 'Waterproofing foundation',
-    },
-    {
-      type: 'image',
-      src: CMI.FoundationDamage,
-      alt: 'Foundation damage',
-    },
-    {
-      type: 'image',
-      src: CMI.basementWaterDamage,
-      alt: 'Basement water damage',
+      src: CMI.AfterYard,
+      alt: 'Finished yard after repair',
     },
     {
       type: 'image',
       src: CMI.ClawDroppingDirt,
-      alt: 'Claw dropping dirt',
+      alt: 'Excavator placing soil backfill',
     },
     {
       type: 'image',
-      src: CMI.ClawInSun,
-      alt: 'Claw in sunlight',
+      src: CMI.MlmBeforeAfter,
+      alt: 'Foundation repair before and after',
+    },
+    {
+      type: 'image',
+      src: CMI.MlmMandRalphie,
+      alt: 'Crew posing with Ralphie',
+    },
+    {
+      type: 'image',
+      src: CMI.MlmYardPipe,
+      alt: 'Yard drain pipe installation',
+    },
+    {
+      type: 'image',
+      src: CMI.MlmYardPipeAfter,
+      alt: 'Restored yard after pipe install',
     },
   ];
 

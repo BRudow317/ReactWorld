@@ -9,7 +9,7 @@ export function ServicesCardGridStyles() {
 
   return {
     section: {
-      padding: "24px",
+      padding: "0",
       // backgroundColor: isDark ? GlobalCSS.GlobalColors.mlmDark : GlobalCSS.GlobalColors.mlmWhite,
     },
     headerRow: {

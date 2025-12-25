@@ -1,10 +1,17 @@
 //import { GlobalCSS } from "../../../../";
 
-export function ServiceCardStyles({ isHovered }) {
+export function ServiceCardStyles({ isHovered, isSmallScreen }) {
 
   const baseBorder = "1px solid rgba(255,255,255,0.10)";
 
   const hoverBorder = "1px solid var(--mlmLightGreen)";
+
+  const textSize = isSmallScreen ? "13px" : "15px";
+  const lineHeight = isSmallScreen ? "16px" : "20px";
+  const padding = isSmallScreen ? "10px" : "14px";
+  const gap = isSmallScreen ? "8px" : "12px";
+  const iconBox = isSmallScreen ? 38 : 46;
+  const iconSize = isSmallScreen ? 18 : 22;
 
   return {
     /**
@@ -14,15 +21,16 @@ export function ServiceCardStyles({ isHovered }) {
      * - minimum width keeps it "card-like" on desktop
      */
     card: {
-      flex: "1 1 240px",
-      minWidth: "240px",
-      maxWidth: "540px",
+      flex: isSmallScreen ? "1 1 calc(50% - 7px)" : "1 1 240px",
+      minWidth: isSmallScreen ? "0" : "240px",
+      maxWidth: isSmallScreen ? "none" : "540px",
 
       display: "flex",
+      flexDirection: isSmallScreen ? "column" : "row",
       alignItems: "center",
-      gap: "12px",
+      gap,
 
-      padding: "14px",
+      padding,
       textDecoration: "none",
       borderRadius: "16px",
       border: isHovered ? hoverBorder : baseBorder,
@@ -46,8 +54,8 @@ export function ServiceCardStyles({ isHovered }) {
     },
 
     iconWrap: {
-      width: "46px",
-      height: "46px",
+      width: `${iconBox}px`,
+      height: `${iconBox}px`,
       borderRadius: "12px",
       display: "flex",
       alignItems: "center",
@@ -58,19 +66,17 @@ export function ServiceCardStyles({ isHovered }) {
       flexShrink: 0,
     },
 
-    icon: {
-      fontSize: "22px",
-      lineHeight: "22px",
-    },
+    iconSize,
 
     textWrap: {
       minWidth: 0, // allows text wrapping inside flex items
+      textAlign: isSmallScreen ? "center" : "left",
     },
 
     title: {
       margin: 0,
-      fontSize: "15px",
-      lineHeight: "20px",
+      fontSize: textSize,
+      lineHeight,
       color: "var(--GlobalTextColor)",
       wordBreak: "break-word",
     },

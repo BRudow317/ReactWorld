@@ -1,34 +1,34 @@
 import { Wrench, Hammer, Shovel, Truck, Trees, Trash2, LandPlot, Construction, Home, CarFront } from "lucide-react";
 
 const DEFAULT_SERVICES = [
-  { id: "emergency-repairs", title: "Emergency Repairs", Icon: Wrench },
+  { id: "emergency-repairs", title: "Emergency", Icon: Wrench },
   { id: "demolition", title: "Demolition", Icon: Hammer },
-  { id: "septic", title: "Septic Installation, Repair & Replacements", Icon: Home },
-  { id: "land-grading", title: "Commercial & Residential Land Grading", Icon: LandPlot },
-  { id: "debris-removal", title: "Debris Removal (Tree/Brush/Stump/Stone/Soil)", Icon: Trash2 },
-  { id: "material-sales", title: "Material Sales (Mulch/Topsoil/Sand/Gravel/Crushed Stone/Cobblestone)", Icon: Construction },
-  { id: "hauling", title: "Hauling Services", Icon: Truck },
-  { id: "foundation-digging", title: "Residential & Commercial Foundation Digging", Icon: Shovel },
-  { id: "driveway", title: "Driveway Construction", Icon: CarFront },
+  { id: "septic", title: "Septic", Icon: Home },
+  { id: "land-grading", title: "Land Grading", Icon: LandPlot },
+  { id: "debris-removal", title: "Debris", Icon: Trash2 },
+  { id: "material-sales", title: "Material Sales", Icon: Construction },
+  { id: "hauling", title: "Hauling", Icon: Truck },
+  { id: "foundation-digging", title: "Foundations", Icon: Shovel },
+  { id: "driveway", title: "Driveways", Icon: CarFront },
 ];
 /**
  * Default service catalog (9 offerings).
  * Each card can scroll to the quote section and optionally pre-select a service.
  */
 const DEFAULT_EMOJI_SERVICES = [
-  { id: "emergency-repairs", title: "Emergency Repairs", icon: "🛠️" },
-  { id: "demolition", title: "Demolition", icon: "🏚️" },
-  { id: "septic", title: "Septic Installation, Repair & Replacements", icon: "🚽" },
-  { id: "land-grading", title: "Commercial & Residential Land Grading", icon: "🚜" },
-  { id: "debris-removal", title: "Debris Removal (Tree/Brush/Stump/Stone/Soil)", icon: "🪵" },
+  { id: "emergency-repairs", title: "Emergency", icon: "???" },
+  { id: "demolition", title: "Demolition", icon: "???" },
+  { id: "septic", title: "Septic", icon: "??" },
+  { id: "land-grading", title: "Land Grading", icon: "??" },
+  { id: "debris-removal", title: "Debris", icon: "??" },
   {
     id: "material-sales",
-    title: "Material Sales (Mulch/Topsoil/Sand/Gravel/Crushed Stone/Cobblestone)",
-    icon: "🪨",
+    title: "Material Sales",
+    icon: "??",
   },
-  { id: "hauling", title: "Hauling Services", icon: "🚛" },
-  { id: "foundation-digging", title: "Residential & Commercial Foundation Digging", icon: "⛏️" },
-  { id: "driveway", title: "Driveway Construction", icon: "🛣️" },
+  { id: "hauling", title: "Hauling", icon: "??" },
+  { id: "foundation-digging", title: "Foundations", icon: "??" },
+  { id: "driveway", title: "Driveways", icon: "???" },
 ];
 
 export { DEFAULT_SERVICES, DEFAULT_EMOJI_SERVICES };

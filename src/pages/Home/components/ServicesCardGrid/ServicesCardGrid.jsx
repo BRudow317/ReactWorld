@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback } from "react";
+import React, { useMemo, useState, useCallback, useEffect } from "react";
 import { useTheme } from "../../../../themes/ThemeContext"; 
 import { ServicesCardGridStyles } from "./ServicesCardGrid.css";
 import { ServiceCard } from "./ServiceCard";
@@ -21,6 +21,16 @@ export function ServicesCardGrid({
   const { theme } = useTheme();
   const styles = useMemo(() => ServicesCardGridStyles());
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 640px)");
+    const handler = (e) => setIsSmallScreen(e.matches);
+    handler(mql);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
   // Hover state (inline-style friendly alternative to :hover in CSS)
   const [hoveredId, setHoveredId] = useState(null);
 
@@ -32,6 +42,8 @@ export function ServicesCardGrid({
     (service, e) => {
       // Allow normal behavior if JavaScript is disabled; with JS enabled we smooth-scroll.
       e.preventDefault();
+
+      console.log("Service card clicked:", service.title);
 
       // Tell the quote form what service was clicked (optional).
       if (typeof onSelectService === "function") {
@@ -69,6 +81,7 @@ export function ServicesCardGrid({
             href={`#${quoteSectionId}`}
             theme={theme}
             isHovered={hoveredId === service.id}
+            isSmallScreen={isSmallScreen}
             onMouseEnter={() => setHoveredId(service.id)}
             onMouseLeave={() => setHoveredId(null)}
             onActivate={(e) => handleActivate(service, e)}
