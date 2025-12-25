@@ -1,23 +1,7 @@
-/* Services Page Styles */
-
-.servicesPageContainer {
-  width: 100%;
-  padding: 20px;
-}
-
-.pageTitle {
-  margin: 0 0 24px 0;
-  font-size: 32px;
-  color: var(--GlobalTextColor);
-  text-align: center;
-}
-
 .contentWrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 /* Service Buttons Sidebar */
@@ -185,10 +169,6 @@
 @media (max-width: 768px) {
   /* Maintain 3 columns on mobile; buttons may become taller to preserve spacing */
 
-  .servicesPageContainer {
-    padding: 12px 8px;
-  }
-
   .contentWrapper {
     gap: 16px;
   }
@@ -205,7 +185,4 @@
     font-size: 22px;
   }
 
-  .pageTitle {
-    font-size: 26px;
-  }
 }

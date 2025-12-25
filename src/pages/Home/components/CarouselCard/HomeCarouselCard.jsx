@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useTheme } from "../../../../themes/ThemeContext"; // keep your existing path
 import { CarouselStyles } from "./CarouselStyles";
 // import { CarouselCard } from "./CarouselCard";
@@ -40,6 +40,18 @@ export const HomeCarouselCard = () => {
       src: CMI.MlmYardPipeAfter,
       alt: 'Restored yard after pipe install',
     },
+    {
+      type: 'iframe',
+      src: 'https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1438938453892064%2F&show_text=false&width=320&t=0&autoplay=1&mute=1&loop=1&playsinline=1',
+      alt: 'Facebook highlight video',
+      title: 'MLM Facebook Feature',
+    },
+    {
+      type: 'iframe',
+      src: 'https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F837399041969401%2F&show_text=false&width=267&t=0&autoplay=1&mute=1&loop=1&playsinline=1',
+      alt: 'Facebook field update video',
+      title: 'MLM Facebook Update',
+    },
   ];
 
   return (
@@ -72,20 +84,63 @@ export const CarouselCard = ({
 }) => {
   const { theme } = useTheme();
 
+  const initialHighlightIndex = items.findIndex(
+    (item) => item.title === "MLM Facebook Update"
+  );
+
+  // State management for current slide index
+  const [currentIndex, setCurrentIndex] = useState(
+    initialHighlightIndex >= 0 ? initialHighlightIndex : 0
+  );
+
   /**
    * Create styles once per render (memoized per theme).
    * Avoids creating a new styles object for every style usage.
    */
   const styles = useMemo(() => CarouselStyles({ theme }), [theme]);
 
-  // State management for current slide index
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   // State for tracking loaded media to enable lazy loading
   const [loadedMedia, setLoadedMedia] = useState(new Set());
 
   // Ref for video elements to control playback
   const videoRefs = useRef({});
+  const renderSlideContent = (item, index) => {
+    if (item.type === "video") {
+      return (
+        <video
+          ref={(el) => (videoRefs.current[index] = el)}
+          src={item.src}
+          style={styles.media}
+          loop
+          muted
+          playsInline
+        />
+      );
+    }
+
+    if (item.type === "iframe") {
+      return (
+        <iframe
+            title={item.title || `Slide ${index + 1}`}
+            src={item.src}
+            style={{ ...styles.media, border: "none" }}
+            loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowFullScreen
+            data-autoplay="true"
+          />
+        );
+      }
+
+    return (
+      <img
+        src={item.src}
+        alt={item.alt || `Slide ${index + 1}`}
+        style={styles.media}
+        loading="lazy"
+      />
+    );
+  };
 
   /**
    * Navigation handler - moves to next slide
@@ -166,25 +221,12 @@ export const CarouselCard = ({
         {/* Slides wrapper - translates horizontally to show current slide */}
         <div style={styles.slidesWrapper({ currentIndex, items })}>
           {items.map((item, index) => (
-            <div key={index} style={styles.slide({ items })}>
+        <div
+          key={index}
+          style={styles.slide({ items })}
+        >
               {loadedMedia.has(index) ? (
-                item.type === "video" ? (
-                  <video
-                    ref={(el) => (videoRefs.current[index] = el)}
-                    src={item.src}
-                    style={styles.media}
-                    loop
-                    muted
-                    playsInline
-                  />
-                ) : (
-                  <img
-                    src={item.src}
-                    alt={item.alt || `Slide ${index + 1}`}
-                    style={styles.media}
-                    loading="lazy"
-                  />
-                )
+                renderSlideContent(item, index)
               ) : (
                 <div style={styles.placeholder}>Loading...</div>
               )}

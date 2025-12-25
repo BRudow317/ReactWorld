@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { DEFAULT_SERVICES } from '../../utils/Constants';
+import PageSection from '../../components/PageSection/PageSection';
 import styles from './Services.module.css';
 
 const ServicesPage = () => {
   const [selectedService, setSelectedService] = useState(null);
+  const contentSectionRef = useRef(null);
 
   const handleServiceClick = (service) => {
     setSelectedService(service);
+    if (contentSectionRef.current) {
+      contentSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
-    <div className={styles.servicesPageContainer}>
-      <h1 className={styles.pageTitle}>Our Services</h1>
-      
+    <PageSection
+      heading="Our Services"
+      subtitle="Select a service and explore the work Miller Land Management delivers."
+    >
       <div className={styles.contentWrapper}>
         {/* Service Buttons Sidebar */}
         <div className={styles.servicesSidebar}>
@@ -36,7 +42,7 @@ const ServicesPage = () => {
         </div>
 
         {/* Content Display Area */}
-        <div className={styles.contentArea}>
+        <div className={styles.contentArea} ref={contentSectionRef}>
           {selectedService ? (
             <div className={styles.serviceContent}>
               <div className={styles.contentHeader}>
@@ -62,7 +68,7 @@ const ServicesPage = () => {
           )}
         </div>
       </div>
-    </div>
+    </PageSection>
   );
 };
 
